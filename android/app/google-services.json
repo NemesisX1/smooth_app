@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "990091645045",
+    "project_id": "smooth-e3a76",
+    "storage_bucket": "smooth-e3a76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:990091645045:android:1a05f3e833dfc8cf8fe83c",
+        "android_client_info": {
+          "package_name": "com.orta.smooth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "990091645045-sbj0s9lkeq2dv2j2dmnqbe7t22tt2h8d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.orta.smooth",
+            "certificate_hash": "17056875a2f9906e50d06a4672871df30e4738e2"
+          }
+        },
+        {
+          "client_id": "990091645045-gllr3eheo5glorps6tp5q3p6t4fajrp2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtd-2yBbvxT5KOhpfEJUjA0Qi9zqk6SG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "990091645045-gllr3eheo5glorps6tp5q3p6t4fajrp2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

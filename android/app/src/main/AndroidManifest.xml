@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.orta.smooth.name">
+    package="com.orta.smooth">
    <application
-        android:label="flutter_starter"
+        android:label="Smooth"
         android:icon="@mipmap/ic_launcher"
         android:name="androidx.multidex.MultiDexApplication">
         <activity

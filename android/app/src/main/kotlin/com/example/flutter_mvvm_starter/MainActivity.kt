@@ -1,4 +1,4 @@
-package com.example.flutter_starter
+package com.orta.smooth
 
 import io.flutter.embedding.android.FlutterActivity
 

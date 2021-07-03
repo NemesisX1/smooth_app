@@ -21,7 +21,11 @@ class _EmptyViewState extends State<EmptyView> {
     return BaseView<EmptyViewModel>(
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(),
-        body: ListBody(),
+        body: Center(
+          child: Text(
+            "The route you attended to reach has not been defined",
+          ),
+        ),
       ),
     );
   }

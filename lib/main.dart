@@ -8,7 +8,7 @@ import 'routes.dart';
 
 /// [globalInitializer()]
 /// Function to initialise all the pre-app things
-void globalInitializer() async {
+globalInitializer() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
   await Firebase.initializeApp();
@@ -17,8 +17,8 @@ void globalInitializer() async {
   await Hive.openBox<AppUser>("user");
 }
 
-void main() {
-  globalInitializer();
+void main() async {
+  await globalInitializer();
 
   runApp(App());
 }
@@ -27,8 +27,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Smooth App',
       theme: appTheme,
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/clientdashboard',
       onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
     );
   }
