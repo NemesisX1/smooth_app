@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:smooth/views/clientdashboard/clientdashboard_view.dart';
+import 'package:smooth/main.dart';
 import 'views/addclient/addclient_view.dart';
 import 'views/command/command_view.dart';
 import 'views/login/login_view.dart';
-import 'views/home/home_view.dart';
 import 'helpers/empty_view.dart';
 
 /// [AppRouter]
@@ -15,14 +14,12 @@ class AppRouter {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => LoginView());
-      case '/home':
-        return MaterialPageRoute(builder: (_) => HomeView());
+      case '/tabhome':
+        return MaterialPageRoute(builder: (_) => TabManager());
       case '/command':
         return MaterialPageRoute(builder: (_) => CommandView());
       case '/addclient':
         return MaterialPageRoute(builder: (_) => AddClientView());
-      case '/clientdashboard':
-        return MaterialPageRoute(builder: (_) => ClientDashboardView());
       default:
         return MaterialPageRoute(builder: (_) {
           return EmptyView();

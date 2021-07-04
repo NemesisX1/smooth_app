@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:smooth/helpers/constants.dart';
 import 'package:smooth/views/widgets/custom_text_button.dart';
 import 'package:smooth/views/widgets/custom_text_field.dart';
@@ -89,9 +90,7 @@ class _CommandViewState extends State<CommandView> {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
+                      Gap(10),
                       RichText(
                         text: TextSpan(
                           text: "1 ",
@@ -174,17 +173,13 @@ class _CommandViewState extends State<CommandView> {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 60,
-                    ),
+                    Gap(60),
                     CustomTextButton(
                       onPressed: () =>
                           Navigator.of(context).pushNamed('/addclient'),
                       text: "Ajouter un client",
                     ),
-                    SizedBox(
-                      height: 60,
-                    ),
+                    Gap(60),
                   ],
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:smooth/helpers/constants.dart';
 import 'package:smooth/views/widgets/custom_text_button.dart';
 import 'package:smooth/views/widgets/custom_text_field.dart';
@@ -43,9 +44,7 @@ class _AddClientViewState extends State<AddClientView> {
                   fontSize: 30,
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              Gap(20),
               Form(
                 child: Column(
                   children: [
@@ -72,9 +71,7 @@ class _AddClientViewState extends State<AddClientView> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              Gap(20),
               Container(
                 height: kGlobalButtonHeigth,
                 margin: EdgeInsets.only(top: 10),
@@ -86,9 +83,7 @@ class _AddClientViewState extends State<AddClientView> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              Gap(20),
               CustomTextButton(
                 text: "Anuller l'ajout",
                 onPressed: () => Navigator.of(context).pop(),

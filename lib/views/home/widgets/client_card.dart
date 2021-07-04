@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import '../../../helpers/constants.dart';
 
 class ClientCard extends StatelessWidget {
@@ -38,9 +39,7 @@ class ClientCard extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    SizedBox(
-                      height: 3,
-                    ),
+                    Gap(3),
                     Text(
                       this.lastCommandDate!,
                       style: TextStyle(
@@ -60,9 +59,7 @@ class ClientCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
-              height: 3,
-            ),
+            Gap(3),
             Divider(
               thickness: 1,
             ),

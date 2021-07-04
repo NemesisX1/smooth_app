@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:smooth/helpers/constants.dart';
 
 class CityCard extends StatelessWidget {
@@ -26,9 +27,7 @@ class CityCard extends StatelessWidget {
                 fontSize: 15,
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            Gap(10),
             Text(
               "XOF",
               style: TextStyle(
@@ -44,9 +43,7 @@ class CityCard extends StatelessWidget {
                 fontSize: 30,
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            Gap(10),
             RichText(
               text: TextSpan(
                 text: "88",

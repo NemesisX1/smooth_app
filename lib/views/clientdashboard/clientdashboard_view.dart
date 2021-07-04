@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:smooth/helpers/constants.dart';
 import 'package:smooth/views/clientdashboard/widgets/client_summary_card.dart';
 import '../../viewmodels/clientdashboard_viewmodel.dart';
@@ -29,9 +30,7 @@ class _ClientDashboardViewState extends State<ClientDashboardView> {
                   fontSize: 30,
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              Gap(30),
               ClientSummaryCard(),
               ClientSummaryCard(),
             ],

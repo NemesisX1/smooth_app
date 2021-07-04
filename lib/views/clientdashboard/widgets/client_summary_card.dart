@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:smooth/helpers/constants.dart';
 
 class ClientSummaryCard extends StatelessWidget {
@@ -26,9 +27,7 @@ class ClientSummaryCard extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      SizedBox(
-                        height: 3,
-                      ),
+                      Gap(3),
                       Text(
                         "25 fev 2015",
                         style: TextStyle(
@@ -50,9 +49,7 @@ class ClientSummaryCard extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
-            height: 7,
-          ),
+          Gap(8),
           Row(
             children: [
               for (int i = 0; i < 5; i++)

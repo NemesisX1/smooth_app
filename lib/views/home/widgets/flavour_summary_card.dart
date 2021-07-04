@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import '../../../helpers/constants.dart';
 
 class FlavourSummaryCard extends StatelessWidget {
@@ -35,9 +36,7 @@ class FlavourSummaryCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(kGlobalBorderRadius),
               ),
             ),
-            SizedBox(
-              width: 10,
-            ),
+            Gap(10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -54,9 +53,7 @@ class FlavourSummaryCard extends StatelessWidget {
                     color: kBrown,
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                Gap(10),
                 Text(
                   "${this.totalPrice} XOF",
                   style: TextStyle(

@@ -67,9 +67,9 @@ class _LoginViewState extends State<LoginView> {
                   height: kGlobalButtonHeigth,
                   child: ElevatedButton(
                     onPressed: () => Navigator.of(context)
-                        .pushNamedAndRemoveUntil('/home', (route) => false),
+                        .pushNamedAndRemoveUntil('/tabhome', (route) => false),
                     child: Text(
-                      "Se connecter".toUpperCase(),
+                      "SE CONNECTER",
                     ),
                   ),
                 ),

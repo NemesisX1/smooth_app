@@ -32,7 +32,6 @@ class App extends StatelessWidget {
       title: 'Smooth App',
       theme: appTheme,
       debugShowCheckedModeBanner: false,
-      home: TabManager(),
       onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
     );
   }
