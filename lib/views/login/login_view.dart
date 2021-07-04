@@ -3,6 +3,7 @@ import 'package:smooth/helpers/constants.dart';
 import 'package:smooth/viewmodels/login_viewmodel.dart';
 import 'package:smooth/views/base_view.dart';
 import 'package:smooth/views/widgets/custom_text_field.dart';
+import 'package:gap/gap.dart';
 
 class LoginView extends StatefulWidget {
   LoginView({Key? key}) : super(key: key);
@@ -30,9 +31,7 @@ class _LoginViewState extends State<LoginView> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 60,
-                ),
+                Gap(100),
                 Text(
                   "Connexion",
                   style: TextStyle(
@@ -41,9 +40,7 @@ class _LoginViewState extends State<LoginView> {
                     fontSize: MediaQuery.of(context).size.height * (0.04),
                   ),
                 ),
-                SizedBox(
-                  height: 60,
-                ),
+                Gap(60),
                 Form(
                   key: _formKey,
                   child: Wrap(
@@ -64,9 +61,7 @@ class _LoginViewState extends State<LoginView> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 50,
-                ),
+                Gap(50),
                 Container(
                   width: double.infinity,
                   height: kGlobalButtonHeigth,
@@ -77,9 +72,6 @@ class _LoginViewState extends State<LoginView> {
                       "Se connecter".toUpperCase(),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 50,
                 ),
               ],
             ),

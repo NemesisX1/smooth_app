@@ -16,14 +16,6 @@ class _ClientDashboardViewState extends State<ClientDashboardView> {
   Widget build(BuildContext context) {
     return BaseView<ClientDashboardViewModel>(
       builder: (context, model, child) => Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Smooth Bénin",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-        ),
         body: SingleChildScrollView(
           padding: EdgeInsets.all(kGlobalMargin),
           child: Column(

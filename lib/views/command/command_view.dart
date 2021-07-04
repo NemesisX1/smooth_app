@@ -19,8 +19,8 @@ class _CommandViewState extends State<CommandView> {
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.menu),
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.of(context).pop(),
           ),
           title: Text(
             "Smooth Bénin",

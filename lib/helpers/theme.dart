@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
 
 /// Global app theme manager
 ThemeData appTheme = ThemeData(
@@ -27,17 +26,31 @@ ThemeData appTheme = ThemeData(
     elevation: 0,
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: kRed,
+    backgroundColor: Color(0xffE8A05D),
   ),
   iconTheme: IconThemeData(
     color: Colors.white,
   ),
   inputDecorationTheme: InputDecorationTheme(
+    hintStyle: TextStyle(
+      color: Color(0xffE8A05D),
+    ),
+    labelStyle: TextStyle(
+      color: Colors.grey,
+    ),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(
+        color: Color(0xffE8A05D),
+      ),
+    ),
     focusColor: Color(0xffCD6709),
     border: UnderlineInputBorder(
       borderSide: BorderSide(
         color: Color(0xffE8A05D),
       ),
+    ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: Color(0xffE8A05D)),
     ),
   ),
   primaryColorBrightness: Brightness.light,
@@ -46,6 +59,17 @@ ThemeData appTheme = ThemeData(
       backgroundColor: MaterialStateProperty.all<Color>(
         Color(0xffCD6709),
       ),
+    ),
+  ),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    selectedIconTheme: IconThemeData(
+      color: Color(0xffE8A05D),
+      size: 35,
+    ),
+    showSelectedLabels: false,
+    showUnselectedLabels: false,
+    unselectedIconTheme: IconThemeData(
+      color: Colors.grey,
     ),
   ),
 );

@@ -18,18 +18,6 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return BaseView<HomeViewModel>(
       builder: (context, model, child) => Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.menu),
-          ),
-          title: Text(
-            "Smooth Bénin",
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -81,7 +69,6 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: kRed,
           onPressed: () => Navigator.of(context).pushNamed('/command'),
           child: Icon(
             Icons.add,

@@ -59,10 +59,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     : widget.keyboardType,
                 obscureText: _obscureText!,
                 decoration: InputDecoration(
-                  //border: OutlineInputBorder(),
                   hintText: widget.hintText,
                   labelText: widget.hintText,
-
                   suffixIcon: widget.isSecret!
                       ? GestureDetector(
                           onTap: () {
