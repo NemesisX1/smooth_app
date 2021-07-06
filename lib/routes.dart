@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:smooth/main.dart';
+
+import 'helpers/empty_view.dart';
 import 'views/addclient/addclient_view.dart';
 import 'views/command/command_view.dart';
 import 'views/login/login_view.dart';
-import 'helpers/empty_view.dart';
 
 /// [AppRouter]
 /// This the base router classes where you can registered
@@ -21,9 +22,7 @@ class AppRouter {
       case '/addclient':
         return MaterialPageRoute(builder: (_) => AddClientView());
       default:
-        return MaterialPageRoute(builder: (_) {
-          return EmptyView();
-        });
+        return MaterialPageRoute(builder: (_) => EmptyView());
     }
   }
 }
