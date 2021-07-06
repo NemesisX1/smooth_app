@@ -14,36 +14,34 @@ class ClientDashboardView extends StatefulWidget {
 
 class _ClientDashboardViewState extends State<ClientDashboardView> {
   @override
-  Widget build(BuildContext context) {
-    return BaseView<ClientDashboardViewModel>(
-      builder: (context, model, child) => Scaffold(
-        body: SingleChildScrollView(
-          padding: EdgeInsets.all(kGlobalMargin),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Nos clients",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
+  Widget build(BuildContext context) => BaseView<ClientDashboardViewModel>(
+        builder: (context, model, child) => Scaffold(
+          body: SingleChildScrollView(
+            padding: EdgeInsets.all(kGlobalMargin),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Nos clients",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
                 ),
-              ),
-              Gap(30),
-              ClientSummaryCard(),
-              ClientSummaryCard(),
-            ],
+                Gap(30),
+                ClientSummaryCard(),
+                ClientSummaryCard(),
+              ],
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => Navigator.of(context).pushNamed('/addclient'),
+            child: Icon(
+              Icons.add,
+              size: 40,
+            ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.of(context).pushNamed('/addclient'),
-          child: Icon(
-            Icons.add,
-            size: 40,
-          ),
-        ),
-      ),
-    );
-  }
+      );
 }

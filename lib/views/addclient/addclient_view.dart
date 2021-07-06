@@ -15,83 +15,81 @@ class AddClientView extends StatefulWidget {
 
 class _AddClientViewState extends State<AddClientView> {
   @override
-  Widget build(BuildContext context) {
-    return BaseView<AddClientViewModel>(
-      builder: (context, model, child) => Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Smooth Bénin",
-            style: TextStyle(
-              color: Colors.white,
+  Widget build(BuildContext context) => BaseView<AddClientViewModel>(
+        builder: (context, model, child) => Scaffold(
+          appBar: AppBar(
+            title: Text(
+              "Smooth Bénin",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+          body: SingleChildScrollView(
+            padding: EdgeInsets.only(
+              top: 50,
+              left: kGlobalMargin,
+              right: kGlobalMargin,
+              bottom: kGlobalMargin,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Nouveau client",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
+                Gap(20),
+                Form(
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                        hintText: "Nom du client",
+                        onSaved: (value) {},
+                        validator: (value) {},
+                      ),
+                      CustomTextField(
+                        hintText: "Prénom",
+                        onSaved: (value) {},
+                        validator: (value) {},
+                      ),
+                      CustomTextField(
+                        hintText: "Numéro de téléphone",
+                        onSaved: (value) {},
+                        validator: (value) {},
+                      ),
+                      CustomTextField(
+                        hintText: "Date de naissance",
+                        onSaved: (value) {},
+                        validator: (value) {},
+                      ),
+                    ],
+                  ),
+                ),
+                Gap(20),
+                Container(
+                  height: kGlobalButtonHeigth,
+                  margin: EdgeInsets.only(top: 10),
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Ajouter".toUpperCase(),
+                    ),
+                  ),
+                ),
+                Gap(20),
+                CustomTextButton(
+                  text: "Anuller l'ajout",
+                  onPressed: () => Navigator.of(context).pop(),
+                )
+              ],
             ),
           ),
         ),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.only(
-            top: 50,
-            left: kGlobalMargin,
-            right: kGlobalMargin,
-            bottom: kGlobalMargin,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Nouveau client",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                ),
-              ),
-              Gap(20),
-              Form(
-                child: Column(
-                  children: [
-                    CustomTextField(
-                      hintText: "Nom du client",
-                      onSaved: (value) {},
-                      validator: (value) {},
-                    ),
-                    CustomTextField(
-                      hintText: "Prénom",
-                      onSaved: (value) {},
-                      validator: (value) {},
-                    ),
-                    CustomTextField(
-                      hintText: "Numéro de téléphone",
-                      onSaved: (value) {},
-                      validator: (value) {},
-                    ),
-                    CustomTextField(
-                      hintText: "Date de naissance",
-                      onSaved: (value) {},
-                      validator: (value) {},
-                    ),
-                  ],
-                ),
-              ),
-              Gap(20),
-              Container(
-                height: kGlobalButtonHeigth,
-                margin: EdgeInsets.only(top: 10),
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Ajouter".toUpperCase(),
-                  ),
-                ),
-              ),
-              Gap(20),
-              CustomTextButton(
-                text: "Anuller l'ajout",
-                onPressed: () => Navigator.of(context).pop(),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+      );
 }

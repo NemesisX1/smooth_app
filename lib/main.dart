@@ -27,14 +27,12 @@ void main() async {
 
 class App extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Smooth App',
-      theme: appTheme,
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        title: 'Smooth App',
+        theme: appTheme,
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: AppRouter.generateRoute,
+      );
 }
 
 class TabManager extends StatefulWidget {
@@ -46,7 +44,7 @@ class TabManager extends StatefulWidget {
 
 class _TabManagerState extends State<TabManager> {
   int _selectedIndex = 0;
-  PageController _pageController = new PageController();
+  PageController _pageController = PageController();
 
   List<Widget> _screensList = [
     HomeView(),
@@ -55,53 +53,51 @@ class _TabManagerState extends State<TabManager> {
   NotchedShape? shape;
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.menu),
-        ),
-        title: Text(
-          "Smooth Bénin",
-          style: TextStyle(
-            color: Colors.white,
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.menu),
           ),
-        ),
-      ),
-      body: PageView(
-        physics: NeverScrollableScrollPhysics(),
-        controller: _pageController,
-        onPageChanged: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
-        children: _screensList,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-            _pageController.jumpToPage(_selectedIndex);
-          });
-        },
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            label: '',
-            icon: Icon(
-              Icons.home,
+          title: Text(
+            "Smooth Bénin",
+            style: TextStyle(
+              color: Colors.white,
             ),
           ),
-          BottomNavigationBarItem(
-            label: '',
-            icon: Icon(
-              Icons.group,
+        ),
+        body: PageView(
+          physics: NeverScrollableScrollPhysics(),
+          controller: _pageController,
+          onPageChanged: (index) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          },
+          children: _screensList,
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: (index) {
+            setState(() {
+              _selectedIndex = index;
+              _pageController.jumpToPage(_selectedIndex);
+            });
+          },
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              label: '',
+              icon: Icon(
+                Icons.home,
+              ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
+            BottomNavigationBarItem(
+              label: '',
+              icon: Icon(
+                Icons.group,
+              ),
+            ),
+          ],
+        ),
+      );
 }

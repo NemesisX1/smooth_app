@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../viewmodels/base_viewmodel.dart';
 import '../../locator.dart';
+import '../viewmodels/base_viewmodel.dart';
 
 /// [BaseView]
 /// Base class to manage a both a view and it related viewmodel
@@ -28,9 +28,6 @@ class _BaseViewState<T extends BaseViewModel> extends State<BaseView<T>> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider<T>(
-        create: (context) => model,
-        child: Consumer<T>(builder: widget.builder!));
-  }
+  Widget build(BuildContext context) => ChangeNotifierProvider<T>(
+      create: (context) => model, child: Consumer<T>(builder: widget.builder!));
 }

@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import "package:hive/hive.dart";
 part 'appuser_model.g.dart';
 
 @HiveType(typeId: 0)
@@ -13,12 +13,10 @@ class AppUser extends HiveObject {
     this.username,
   });
 
-  toJson() {
-    return {
-      "username": this.username,
-      "email": this.email,
-    };
-  }
+  Map<String, dynamic> toJson() => {
+        "username": username,
+        "email": email,
+      };
 
   factory AppUser.fromJson(Map<String, dynamic> json) {
     AppUser user = AppUser(
@@ -29,7 +27,5 @@ class AppUser extends HiveObject {
   }
 
   @override
-  String toString() {
-    return '{user:username:$username, email:$email}';
-  }
+  String toString() => '{user:username:$username, email:$email}';
 }

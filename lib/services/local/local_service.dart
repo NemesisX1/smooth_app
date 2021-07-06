@@ -11,10 +11,11 @@ class LocalService {
       print(e);
     }
     Box<AppUser> box = Hive.box('user');
-    if (box.isNotEmpty)
+    if (box.isNotEmpty) {
       await box.putAt(0, user);
-    else
+    } else {
       await box.add(user);
+    }
   }
 
   AppUser? readAppUser() {

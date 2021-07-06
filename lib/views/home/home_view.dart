@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smooth/helpers/constants.dart';
 import 'package:smooth/viewmodels/home_viewmodel.dart';
 import 'package:smooth/views/base_view.dart';
 import 'package:smooth/views/home/widgets/city_card.dart';
@@ -15,67 +14,65 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   @override
-  Widget build(BuildContext context) {
-    return BaseView<HomeViewModel>(
-      builder: (context, model, child) => Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                width: double.infinity,
-                height: MediaQuery.of(context).size.height * (0.4),
-                color: Theme.of(context).primaryColor,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        CityCard(),
-                        CityCard(),
-                      ],
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+  Widget build(BuildContext context) => BaseView<HomeViewModel>(
+        builder: (context, model, child) => Scaffold(
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * (0.4),
+                  color: Theme.of(context).primaryColor,
+                  child: Column(
+                    children: [
+                      Row(
                         children: [
-                          FlavourSummaryCard(
-                            title: "Café Bilbao",
-                            nbrSold: 140,
-                            totalPrice: 375000,
-                          ),
-                          FlavourSummaryCard(
-                            title: "Café Bilbao",
-                            nbrSold: 140,
-                            totalPrice: 375000,
-                          ),
+                          CityCard(),
+                          CityCard(),
                         ],
                       ),
-                    ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            FlavourSummaryCard(
+                              title: "Café Bilbao",
+                              nbrSold: 140,
+                              totalPrice: 375000,
+                            ),
+                            FlavourSummaryCard(
+                              title: "Café Bilbao",
+                              nbrSold: 140,
+                              totalPrice: 375000,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Column(
+                  children: [
+                    for (int i = 0; i < 50; i++)
+                      ClientCard(
+                        clientName: "Junior Medehou",
+                        amount: 15000,
+                        lastCommandDate: "25 Février 2015",
+                      ),
                   ],
                 ),
-              ),
-              Column(
-                children: [
-                  for (int i = 0; i < 50; i++)
-                    ClientCard(
-                      clientName: "Junior Medehou",
-                      amount: 15000,
-                      lastCommandDate: "25 Février 2015",
-                    ),
-                ],
-              ),
-            ],
+              ],
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => Navigator.of(context).pushNamed('/command'),
+            child: Icon(
+              Icons.add,
+              size: 40,
+            ),
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.of(context).pushNamed('/command'),
-          child: Icon(
-            Icons.add,
-            size: 40,
-          ),
-        ),
-      ),
-    );
-  }
+      );
 }
