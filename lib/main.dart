@@ -4,8 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smooth/views/clientdashboard/clientdashboard_view.dart';
 import 'package:smooth/views/home/home_view.dart';
 import 'helpers/theme.dart';
-import 'models/appuser_model.dart';
 import 'locator.dart';
+import 'models/appuser_model.dart';
 import 'routes.dart';
 
 /// [globalInitializer()]

@@ -1,9 +1,10 @@
 import 'package:hive/hive.dart';
+import 'package:smooth/services/base_service.dart';
 import '../../models/appuser_model.dart';
 
 /// [LocalService]
 /// A base class to interact with local storage with Hive
-class LocalService {
+class LocalService extends BaseService {
   saveUser(AppUser user) async {
     try {
       await Hive.openBox<AppUser>("user");

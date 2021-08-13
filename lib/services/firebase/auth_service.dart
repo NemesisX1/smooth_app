@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth/services/base_service.dart';
 
 /// [AuthService]
 /// This is a basic classe to provide some firebase_auth's utilities
-class AuthService {
+class AuthService extends BaseService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User user = FirebaseAuth.instance.currentUser!;
 
@@ -17,13 +18,13 @@ class AuthService {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         isOk = false;
-        debugPrint("Sign In failed. Error: " + e.code);
+        debugPrint("Sign In failed. Error: ${e.code}");
       } else if (e.code == 'wrong-password') {
         isOk = false;
-        debugPrint("Sign In failed. Error: " + e.code);
+        debugPrint("Sign In failed. Error: ${e.code}");
       } else {
         isOk = false;
-        debugPrint("Sign In failed. Error: " + e.code);
+        debugPrint("Sign In failed. Error: ${e.code}");
       }
     }
     return isOk;
@@ -37,7 +38,7 @@ class AuthService {
       await _auth.createUserWithEmailAndPassword(
           email: mail, password: password);
     } on FirebaseAuthException catch (e) {
-      debugPrint("Sign Up failed. Error: " + e.code);
+      debugPrint("Sign Up failed. Error: ${e.code}");
     }
   }
 
@@ -46,10 +47,7 @@ class AuthService {
       await _auth.signOut();
       if (afterSignOut != null) afterSignOut();
     } on FirebaseAuthException catch (e) {
-      debugPrint("Sign Out failed. Error: " + e.code);
+      debugPrint("Sign Out failed. Error: ${e.code}");
     }
   }
 }
-
-var auth =
-    new AuthService(); // if necessary. Feel free to delete this line if you prefer use locator

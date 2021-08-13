@@ -11,7 +11,7 @@ class CustomTextField extends StatefulWidget {
   final Function()? onEditingComplete;
   final bool? isSecret;
   final TextEditingController? controller;
-
+  final Widget? suffixIcon;
   CustomTextField({
     this.hintText,
     this.keyboardType,
@@ -22,6 +22,7 @@ class CustomTextField extends StatefulWidget {
     this.isSecret = false,
     this.controller,
     this.onEditingComplete,
+    this.suffixIcon,
   });
 
   @override
@@ -73,7 +74,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                   : Icons.remove_red_eye_outlined,
                             ),
                           )
-                        : null,
+                        : widget.suffixIcon,
                   ),
                 ),
               ),

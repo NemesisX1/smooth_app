@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:smooth/helpers/constants.dart';
+import 'package:smooth/views/command/widgets/field_chooser.dart';
 import 'package:smooth/views/widgets/custom_text_button.dart';
 import 'package:smooth/views/widgets/custom_text_field.dart';
 import '../../viewmodels/command_viewmodel.dart';
@@ -14,6 +15,24 @@ class CommandView extends StatefulWidget {
 }
 
 class _CommandViewState extends State<CommandView> {
+  static const List<String> fakeClientList = [
+    "Donald Auer",
+    "Orrin Okuneva",
+    "Coralie Schulist",
+    "Mrs. Tierra Lueilwitz",
+    "Noemy Gibson",
+    "Reuben Swaniawski",
+    "Rahul Douglas",
+    "Joany Bradtke",
+    "Lucile Renner",
+    "Chyna Miller",
+    "Tanya Rolfson",
+    "Dr. Percy Gerlach",
+    "Ms. Lester Collins",
+    "Mrs. Rylee Steuber",
+    "Eric Kreiger",
+  ]; // for test purposes
+
   @override
   Widget build(BuildContext context) => BaseView<CommandViewModel>(
         builder: (context, model, child) => Scaffold(
@@ -122,11 +141,7 @@ class _CommandViewState extends State<CommandView> {
                       Form(
                         child: Column(
                           children: [
-                            CustomTextField(
-                              hintText: "Nom du client",
-                              onSaved: (value) {},
-                              validator: (value) {},
-                            ),
+                            FieldChooserWidget(),
                             CustomTextField(
                               hintText: "Numéro de téléphone",
                               keyboardType: TextInputType.number,
