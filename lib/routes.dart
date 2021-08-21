@@ -7,9 +7,6 @@ import 'views/addclient/addclient.view.dart';
 import 'views/command/command.view.dart';
 import 'views/login/login.view.dart';
 
-/// [AppRouter]
-/// This the base router classes where you can registered
-/// and customize all the named routes of your app
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
