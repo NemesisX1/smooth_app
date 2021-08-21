@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:smooth/views/clientdashboard/clientdashboard_view.dart';
-import 'package:smooth/views/home/home_view.dart';
+import 'package:smooth/views/clientdashboard/clientdashboard.view.dart';
+import 'package:smooth/views/home/home.view.dart';
 import 'helpers/theme.dart';
 import 'locator.dart';
-import 'models/appuser_model.dart';
+import 'models/appuser.model.dart';
 import 'routes.dart';
 
 /// [globalInitializer()]
@@ -36,6 +36,8 @@ class App extends StatelessWidget {
 }
 
 class TabManager extends StatefulWidget {
+  static const String routeName = '/tabhome';
+
   TabManager({Key? key}) : super(key: key);
 
   @override

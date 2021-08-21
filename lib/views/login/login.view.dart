@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:smooth/helpers/constants.dart';
-import 'package:smooth/viewmodels/login_viewmodel.dart';
-import 'package:smooth/views/base_view.dart';
-import 'package:smooth/views/widgets/custom_text_field.dart';
+import 'package:smooth/viewmodels/login.viewmodel.dart';
+import 'package:smooth/views/base.view.dart';
+import 'package:smooth/views/widgets/custom_text_field.view.dart';
 import 'package:gap/gap.dart';
 
 class LoginView extends StatefulWidget {
+  static const String routeName = '/';
+
   LoginView({Key? key}) : super(key: key);
 
   @override

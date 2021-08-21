@@ -3,9 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:smooth/main.dart';
 
 import 'helpers/empty_view.dart';
-import 'views/addclient/addclient_view.dart';
-import 'views/command/command_view.dart';
-import 'views/login/login_view.dart';
+import 'views/addclient/addclient.view.dart';
+import 'views/command/command.view.dart';
+import 'views/login/login.view.dart';
 
 /// [AppRouter]
 /// This the base router classes where you can registered
@@ -13,13 +13,13 @@ import 'views/login/login_view.dart';
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case '/':
+      case LoginView.routeName:
         return MaterialPageRoute(builder: (_) => LoginView());
-      case '/tabhome':
+      case TabManager.routeName:
         return MaterialPageRoute(builder: (_) => TabManager());
-      case '/command':
+      case CommandView.routeName:
         return MaterialPageRoute(builder: (_) => CommandView());
-      case '/addclient':
+      case AddClientView.routeName:
         return MaterialPageRoute(builder: (_) => AddClientView());
       default:
         return MaterialPageRoute(builder: (_) => EmptyView());

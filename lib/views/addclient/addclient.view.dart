@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:smooth/helpers/constants.dart';
-import 'package:smooth/views/widgets/custom_text_button.dart';
-import 'package:smooth/views/widgets/custom_text_field.dart';
-import '../../viewmodels/addclient_viewmodel.dart';
-import '../../views/base_view.dart';
+import 'package:smooth/views/widgets/custom_text_button.widget.dart';
+import 'package:smooth/views/widgets/custom_text_field.widget.dart';
+import '../../viewmodels/addclient.viewmodel.dart';
+import '../base.view.dart';
 
 class AddClientView extends StatefulWidget {
+  static const String routeName = '/addclient';
+
   AddClientView({Key? key}) : super(key: key);
 
   @override

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:smooth/helpers/constants.dart';
-import 'package:smooth/views/command/widgets/field_chooser.dart';
-import 'package:smooth/views/widgets/custom_text_button.dart';
-import 'package:smooth/views/widgets/custom_text_field.dart';
-import '../../viewmodels/command_viewmodel.dart';
-import '../../views/base_view.dart';
+import 'package:smooth/views/command/widgets/field_chooser.widget.dart';
+import 'package:smooth/views/widgets/custom_text_button.widget.dart';
+import 'package:smooth/views/widgets/custom_text_field.widget.dart';
+import '../../viewmodels/command.viewmodel.dart';
+import '../base.view.dart';
 
 class CommandView extends StatefulWidget {
+  static const String routeName = '/command';
+
   CommandView({Key? key}) : super(key: key);
 
   @override
