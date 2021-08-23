@@ -15,7 +15,6 @@ class CityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        height: MediaQuery.of(context).size.height * 0.17,
         width: MediaQuery.of(context).size.width * (0.38),
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.all(kGlobalMargin),
@@ -23,29 +22,29 @@ class CityCard extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
-        alignment: Alignment.center,
-        child: Wrap(
-          crossAxisAlignment: WrapCrossAlignment.start,
-          direction: Axis.vertical,
+        alignment: Alignment.centerLeft,
+        child: Column(
           children: [
             Text(
               cityName!,
               style: TextStyle(
                 color: Theme.of(context).accentColor,
-                fontSize: 15,
+                fontSize: 17,
               ),
             ),
-            Gap(10),
+            Gap(5),
             Text(
               "XOF",
               style: TextStyle(
                 color: kGreen,
                 fontWeight: FontWeight.bold,
+                fontSize: 25,
               ),
             ),
             AutoSizeText(
               amount.toString(),
-              maxFontSize: 30,
+              minFontSize: 15,
+              maxFontSize: 100,
               maxLines: 1,
               style: TextStyle(
                 color: kGreen,
@@ -53,24 +52,24 @@ class CityCard extends StatelessWidget {
               ),
             ),
             Gap(10),
-            /*RichText(
-          text: TextSpan(
-            text: "88",
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-            children: [
-              TextSpan(
-                text: " Billbao",
+            RichText(
+              text: TextSpan(
+                text: "88",
                 style: TextStyle(
                   color: Colors.black,
-                  fontWeight: FontWeight.normal,
+                  fontWeight: FontWeight.bold,
                 ),
-              )
-            ],
-          ),
-        )*/
+                children: [
+                  TextSpan(
+                    text: " Billbao",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       );

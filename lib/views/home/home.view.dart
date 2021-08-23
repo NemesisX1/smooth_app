@@ -27,6 +27,7 @@ class _HomeViewState extends State<HomeView> {
                   child: Column(
                     children: [
                       SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
                         child: Row(
                           children: List<CityCard>.generate(
                             appCities.length,
