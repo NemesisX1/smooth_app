@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'command.model.g.dart';
+
+@JsonSerializable()
 class Command {
   String clientName;
   String location;
@@ -12,4 +17,7 @@ class Command {
     this.flavourName = "",
     this.qty = 0,
   });
+  factory Command.fromJson(Map<String, dynamic> json) =>
+      _$CommandFromJson(json);
+  Map<String, dynamic> toJson() => _$CommandToJson(this);
 }

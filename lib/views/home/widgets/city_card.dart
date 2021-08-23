@@ -24,6 +24,8 @@ class CityCard extends StatelessWidget {
         ),
         alignment: Alignment.centerLeft,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               cityName!,
@@ -38,12 +40,13 @@ class CityCard extends StatelessWidget {
               style: TextStyle(
                 color: kGreen,
                 fontWeight: FontWeight.bold,
-                fontSize: 25,
+                fontSize: 12,
               ),
             ),
+            Gap(3),
             AutoSizeText(
               amount.toString(),
-              minFontSize: 15,
+              minFontSize: 20,
               maxFontSize: 100,
               maxLines: 1,
               style: TextStyle(
