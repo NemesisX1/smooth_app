@@ -64,10 +64,10 @@ class _AddClientViewState extends State<AddClientView> {
                         onSaved: (value) {},
                         validator: (value) {},
                       ),
-                      CustomTextField(
-                        hintText: "Date de naissance",
-                        onSaved: (value) {},
-                        validator: (value) {},
+                      DatePickerDialog(
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1950, 1, 1),
+                        lastDate: DateTime.now(),
                       ),
                     ],
                   ),

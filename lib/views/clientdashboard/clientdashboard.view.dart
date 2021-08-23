@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:smooth/helpers/constants.dart';
-import 'package:smooth/views/clientdashboard/widgets/client_summary_card.dart';
-import '../../viewmodels/clientdashboard_viewmodel.dart';
-import '../../views/base_view.dart';
+import 'package:smooth/views/clientdashboard/widgets/client_summary_card.widget.dart';
+import '../../viewmodels/clientdashboard.viewmodel.dart';
+import '../base.view.dart';
 
 class ClientDashboardView extends StatefulWidget {
   ClientDashboardView({Key? key}) : super(key: key);

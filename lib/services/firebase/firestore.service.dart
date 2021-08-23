@@ -1,3 +1,3 @@
-import 'package:smooth/services/base_service.dart';
+import 'package:smooth/services/base.service.dart';
 
 class FirestoreService extends BaseService {}

@@ -27,6 +27,8 @@ dependencies:
   hive_flutter: ^1.0.0
   json_annotation: ^4.0.1
   gap: ^2.0.0
+  supercharged: ^2.0.0
+  auto_size_text: ^3.0.0-nullsafety.0
 
 dev_dependencies:
   flutter_test:

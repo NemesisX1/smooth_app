@@ -10,3 +10,11 @@ const Color kRed = Color(0xffE30045);
 const double kGlobalMargin = 15;
 const double kGlobalBorderRadius = 10;
 const double kGlobalButtonHeigth = 45;
+
+/// Information about the cities
+const List<String> appCities = [
+  "Cotonou",
+  "Porto-Novo",
+  "Calavi",
+  "Parakou",
+];

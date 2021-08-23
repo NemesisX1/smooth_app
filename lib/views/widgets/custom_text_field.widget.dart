@@ -72,6 +72,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                               _obscureText!
                                   ? Icons.remove_red_eye
                                   : Icons.remove_red_eye_outlined,
+                              color: Theme.of(context).accentColor,
                             ),
                           )
                         : widget.suffixIcon,

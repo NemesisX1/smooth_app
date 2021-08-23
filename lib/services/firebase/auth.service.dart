@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smooth/services/base_service.dart';
+import 'package:smooth/services/base.service.dart';
 
 /// [AuthService]
 /// This is a basic classe to provide some firebase_auth's utilities

@@ -1,5 +1,5 @@
 import "package:hive/hive.dart";
-part 'appuser_model.g.dart';
+part 'appuser.model.g.dart';
 
 @HiveType(typeId: 0)
 class AppUser extends HiveObject {

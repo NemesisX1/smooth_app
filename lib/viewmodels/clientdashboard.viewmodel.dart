@@ -1,3 +1,3 @@
-import 'package:smooth/viewmodels/base_viewmodel.dart';
+import 'package:smooth/viewmodels/base.viewmodel.dart';
 
 class ClientDashboardViewModel extends BaseViewModel {}

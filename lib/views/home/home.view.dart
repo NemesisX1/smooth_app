@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smooth/viewmodels/home_viewmodel.dart';
-import 'package:smooth/views/base_view.dart';
+import 'package:smooth/helpers/constants.dart';
+import 'package:smooth/viewmodels/home.viewmodel.dart';
+import 'package:smooth/views/base.view.dart';
 import 'package:smooth/views/home/widgets/city_card.dart';
 import 'package:smooth/views/home/widgets/client_card.dart';
 import 'package:smooth/views/home/widgets/flavour_summary_card.dart';
@@ -25,11 +26,16 @@ class _HomeViewState extends State<HomeView> {
                   color: Theme.of(context).primaryColor,
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          CityCard(),
-                          CityCard(),
-                        ],
+                      SingleChildScrollView(
+                        child: Row(
+                          children: List<CityCard>.generate(
+                            appCities.length,
+                            (index) => CityCard(
+                              cityName: appCities[index],
+                              amount: 12000,
+                            ),
+                          ),
+                        ),
                       ),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,

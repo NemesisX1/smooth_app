@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:smooth/helpers/constants.dart';
+import 'package:smooth/models/command.model.dart';
+import 'package:smooth/models/flavour.model.dart';
 import 'package:smooth/views/command/widgets/field_chooser.widget.dart';
 import 'package:smooth/views/widgets/custom_text_button.widget.dart';
-import 'package:smooth/views/widgets/custom_text_field.widget.dart';
+import 'package:supercharged/supercharged.dart';
 import '../../viewmodels/command.viewmodel.dart';
 import '../base.view.dart';
 
@@ -17,6 +19,9 @@ class CommandView extends StatefulWidget {
 }
 
 class _CommandViewState extends State<CommandView> {
+  Command _command = Command();
+  bool didClientExist = false;
+
   static const List<String> fakeClientList = [
     "Donald Auer",
     "Orrin Okuneva",
@@ -33,8 +38,21 @@ class _CommandViewState extends State<CommandView> {
     "Ms. Lester Collins",
     "Mrs. Rylee Steuber",
     "Eric Kreiger",
-  ]; // for test purposes
+  ]; // for tests purpose
 
+  static const List<String> fakeCityList = [
+    "Cotonou",
+    "Porto-Novo",
+    "Calavi",
+    "Parakou",
+  ]; // for tests purpose
+
+  static const List<Flavour> fakeFlavourList = [
+    Flavour(name: "Bilbao", price: 1500),
+    Flavour(name: "Fraise", price: 1400),
+    Flavour(name: "Lavande", price: 4700),
+    Flavour(name: "Vanille", price: 3500),
+  ];
   @override
   Widget build(BuildContext context) => BaseView<CommandViewModel>(
         builder: (context, model, child) => Scaffold(
@@ -73,7 +91,7 @@ class _CommandViewState extends State<CommandView> {
                       children: [
                         RichText(
                           text: TextSpan(
-                            text: "Olafemi Adjinda | ",
+                            text: "${model.currentCommand.clientName} | ",
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -81,7 +99,7 @@ class _CommandViewState extends State<CommandView> {
                             ),
                             children: [
                               TextSpan(
-                                text: "Cotonou",
+                                text: "${model.currentCommand.location}",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.normal,
@@ -101,7 +119,9 @@ class _CommandViewState extends State<CommandView> {
                               ),
                             ),
                             Text(
-                              "220 000",
+                              (model.currentCommand.amount *
+                                      model.currentCommand.qty)
+                                  .toString(),
                               style: TextStyle(
                                 color: kGreen,
                                 fontWeight: FontWeight.bold,
@@ -113,7 +133,8 @@ class _CommandViewState extends State<CommandView> {
                         Gap(10),
                         RichText(
                           text: TextSpan(
-                            text: "1 ",
+                            text:
+                                "${model.currentCommand.flavourName} (${model.currentCommand.qty})",
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -121,7 +142,7 @@ class _CommandViewState extends State<CommandView> {
                             ),
                             children: [
                               TextSpan(
-                                text: "Saveurs à préciser*",
+                                text: " saveurs à préciser*",
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.normal,
@@ -143,47 +164,84 @@ class _CommandViewState extends State<CommandView> {
                       Form(
                         child: Column(
                           children: [
-                            FieldChooserWidget(),
-                            CustomTextField(
+                            FieldChooserWidget(
+                              hintText: "Nom du client",
+                              fieldList: fakeClientList,
+                              onEdited: (value) {
+                                _command.clientName = value;
+                                if (fakeClientList
+                                    .contains(_command.clientName)) {
+                                  didClientExist = true;
+                                } else {
+                                  didClientExist = false;
+                                }
+                                model.updateCurrentCommand(_command);
+                              },
+                            ),
+                            FieldChooserWidget(
                               hintText: "Numéro de téléphone",
+                              fieldList: [],
+                              displaySearch: false,
                               keyboardType: TextInputType.number,
-                              onSaved: (value) {},
-                              validator: (value) {},
+                              onEdited: (love) {},
                             ),
-                            CustomTextField(
+                            FieldChooserWidget(
                               hintText: "Saveur",
-                              keyboardType: TextInputType.number,
-                              onSaved: (value) {},
-                              validator: (value) {},
+                              fieldList: List<String>.generate(
+                                  fakeFlavourList.length,
+                                  (index) => fakeFlavourList[index].name!),
+                              keyboardType: TextInputType.text,
+                              onEdited: (value) {
+                                _command.flavourName = value;
+                                _command.amount = fakeFlavourList
+                                    .where((element) =>
+                                        element.name == _command.flavourName)
+                                    .first
+                                    .price as int;
+                                model.updateCurrentCommand(_command);
+                              },
                             ),
-                            CustomTextField(
+                            FieldChooserWidget(
+                              displaySearch: false,
                               hintText: "Quantité",
+                              fieldList: fakeClientList,
                               keyboardType: TextInputType.number,
-                              onSaved: (value) {},
-                              validator: (value) {},
+                              onEdited: (value) {
+                                _command.qty = value.toInt()!;
+                                model.updateCurrentCommand(_command);
+                              },
                             ),
-                            CustomTextField(
+                            FieldChooserWidget(
                               hintText: "Ville de livraison",
-                              keyboardType: TextInputType.number,
-                              onSaved: (value) {},
-                              validator: (value) {},
+                              fieldList: appCities,
+                              keyboardType: TextInputType.text,
+                              onEdited: (value) {
+                                _command.location = value;
+                                model.updateCurrentCommand(_command);
+                              },
                             ),
                           ],
                         ),
                       ),
+                      //if (model.didClientExist)
                       Container(
                         height: 45,
                         margin: EdgeInsets.only(top: 10),
                         width: double.infinity,
                         child: ElevatedButton(
-                          style: Theme.of(context)
-                              .elevatedButtonTheme
-                              .style!
-                              .copyWith(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.grey)),
-                          onPressed: () {},
+                          style: didClientExist
+                              ? Theme.of(context).elevatedButtonTheme.style
+                              : Theme.of(context)
+                                  .elevatedButtonTheme
+                                  .style!
+                                  .copyWith(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                      Colors.grey,
+                                    ),
+                                  ),
+                          onPressed:
+                              didClientExist ? model.validateCommand : () {},
                           child: Text(
                             "Valider la commande".toUpperCase(),
                           ),

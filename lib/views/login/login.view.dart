@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smooth/helpers/constants.dart';
 import 'package:smooth/viewmodels/login.viewmodel.dart';
 import 'package:smooth/views/base.view.dart';
-import 'package:smooth/views/widgets/custom_text_field.view.dart';
+import 'package:smooth/views/widgets/custom_text_field.widget.dart';
 import 'package:gap/gap.dart';
 
 class LoginView extends StatefulWidget {
@@ -54,6 +54,7 @@ class _LoginViewState extends State<LoginView> {
                           validator: model.usernameValidator,
                         ),
                         CustomTextField(
+                          isSecret: true,
                           controller: _pwdController,
                           hintText: "Mot de passe",
                           onSaved: (value) {},
@@ -67,9 +68,12 @@ class _LoginViewState extends State<LoginView> {
                     width: double.infinity,
                     height: kGlobalButtonHeigth,
                     child: ElevatedButton(
-                      onPressed: () => Navigator.of(context)
-                          .pushNamedAndRemoveUntil(
-                              '/tabhome', (route) => false),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              '/tabhome', (route) => false);
+                        }
+                      },
                       child: Text(
                         "SE CONNECTER",
                       ),

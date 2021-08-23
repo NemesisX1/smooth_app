@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:smooth/services/base_service.dart';
-import '../../models/appuser_model.dart';
+import 'package:smooth/services/base.service.dart';
+import '../../models/appuser.model.dart';
 
 /// [LocalService]
 /// A base class to interact with local storage with Hive

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../locator.dart';
-import '../viewmodels/base_viewmodel.dart';
+import '../viewmodels/base.viewmodel.dart';
 
 /// [BaseView]
 /// Base class to manage a both a view and it related viewmodel

@@ -1,52 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:smooth/views/widgets/custom_text_field.dart';
+import 'package:smooth/views/widgets/custom_text_field.widget.dart';
 import 'package:smooth/helpers/extensions.dart';
 
 class FieldChooserWidget extends StatefulWidget {
-  FieldChooserWidget({Key? key}) : super(key: key);
+  FieldChooserWidget({
+    Key? key,
+    this.onEdited,
+    this.keyboardType,
+    this.displaySearch = true,
+    this.textController,
+    required this.hintText,
+    required this.fieldList,
+  }) : super(key: key);
 
+  final void Function(String)? onEdited;
+  final String hintText;
+  final TextInputType? keyboardType;
+  final List<String> fieldList;
+  final bool displaySearch;
+  final TextEditingController? textController;
   @override
   _FieldChooserWidgetState createState() => _FieldChooserWidgetState();
 }
 
 class _FieldChooserWidgetState extends State<FieldChooserWidget> {
-  final List<String> fakeClientList = [
-    "Orrin Okuneva",
-    "Coralie Schulist",
-    "Mrs. Tierra Lueilwitz",
-    "Noemy Gibson",
-    "Reuben Swaniawski",
-    "Rahul Douglas",
-    "Joany Bradtke",
-    "Lucile Renner",
-    "Chyna Miller",
-    "Tanya Rolfson",
-    "Dr. Percy Gerlach",
-    "Ms. Lester Collins",
-    "Mrs. Rylee Steuber",
-    "Eric Kreiger",
-  ];
-  String _typedField = "";
   bool _hasFoundName = true;
+  late TextEditingController _typedFieldController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _typedFieldController = widget.textController ?? TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) => Column(
         children: [
           CustomTextField(
-            hintText: "Nom du client",
+            controller: _typedFieldController,
+            hintText: widget.hintText,
+            keyboardType: widget.keyboardType,
             onChanged: (value) {
               setState(() {
-                _typedField = value;
                 _hasFoundName = true;
+                widget.onEdited!(_typedFieldController.text);
               });
-            },
-            onSaved: (value) {
-              print("love");
             },
             validator: (value) {},
           ),
-          _typedField.isNotEmpty && _hasFoundName
+          _typedFieldController.text.isNotEmpty &&
+                  _hasFoundName &&
+                  widget.displaySearch
               ? Column(
                   children: [
                     Container(
@@ -69,7 +75,7 @@ class _FieldChooserWidgetState extends State<FieldChooserWidget> {
                           ),
                           Gap(10),
                           Text(
-                            "Ecrire le nom du client",
+                            "Rechercher ${widget.hintText.toLowerCase()}",
                             style: TextStyle(
                               color: Color(0xff733904),
                             ),
@@ -77,15 +83,17 @@ class _FieldChooserWidgetState extends State<FieldChooserWidget> {
                         ],
                       ),
                     ),
-                    ...List<Widget>.generate(fakeClientList.length, (index) {
-                      if (fakeClientList[index]
+                    ...List<Widget>.generate(widget.fieldList.length, (index) {
+                      if (widget.fieldList[index]
                           .toLowerCase()
-                          .contains(_typedField.toLowerCase())) {
-                        return fakeClientList[index].toListTile(
+                          .contains(_typedFieldController.text.toLowerCase())) {
+                        return widget.fieldList[index].toListTile(
                           color: Color(0xffCF8F5),
                           onTap: () {
                             setState(() {
-                              _typedField = fakeClientList[index];
+                              _typedFieldController.text =
+                                  widget.fieldList[index];
+                              widget.onEdited!(_typedFieldController.text);
                             });
                           },
                         );

@@ -1,3 +1,3 @@
-import 'base_viewmodel.dart';
+import 'base.viewmodel.dart';
 
 class AddClientViewModel extends BaseViewModel {}
