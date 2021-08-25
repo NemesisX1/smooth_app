@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:smooth/helpers/constants.dart';
 import 'package:smooth/helpers/enums.dart';
+import 'package:smooth/models/client.model.dart';
 import 'package:smooth/views/widgets/custom_text_button.widget.dart';
 import 'package:smooth/views/widgets/custom_text_field.widget.dart';
 import '../../viewmodels/addclient.viewmodel.dart';
@@ -93,14 +94,14 @@ class _AddClientViewState extends State<AddClientView> {
   TextEditingController _firstnameController = TextEditingController();
   TextEditingController _surnameController = TextEditingController();
   TextEditingController _phoneNumberController = TextEditingController();
-  late String _birthdayDate;
+  late DateTime _birthdayDate;
   final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _birthdayDate = DateTime.now().toString();
+    _birthdayDate = DateTime.now();
   }
 
   @override
@@ -170,7 +171,7 @@ class _AddClientViewState extends State<AddClientView> {
                       ),
                       DateSelectorButton(
                         onDateChosen: (value) {
-                          _birthdayDate = value.toString();
+                          _birthdayDate = value!;
                         },
                       ),
                     ],
@@ -184,9 +185,19 @@ class _AddClientViewState extends State<AddClientView> {
                   child: ElevatedButton(
                     onPressed: () async {
                       if (_formKey.currentState!.validate() &&
-                          _birthdayDate.isNotEmpty) {
+                          _birthdayDate != DateTime.now()) {
                         model.setState(ViewState.Busy);
-                        //await Future.delayed(Duration(seconds: 2));
+
+                        await model.addClient(Client(
+                          name:
+                              // ignore: lines_longer_than_80_chars
+                              '${_surnameController.text} ${_firstnameController.text}',
+                          phoneNumber: _phoneNumberController.text,
+                          birthday: _birthdayDate,
+                        ));
+
+                        model.setState(ViewState.Idle);
+                        Navigator.of(context).pop();
                       }
                       //model.setState(ViewState.Idle);
                     },
@@ -201,8 +212,9 @@ class _AddClientViewState extends State<AddClientView> {
                 ),
                 Gap(20),
                 CustomTextButton(
+                  text: "Annuler".toUpperCase(),
                   onPressed: () => Navigator.of(context).pop(),
-                )
+                ),
               ],
             ),
           ),

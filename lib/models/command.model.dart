@@ -22,6 +22,7 @@ class Command extends BaseModel {
       _$CommandFromJson(json);
   @override
   Map<String, dynamic> toJson() => _$CommandToJson(this);
+
   @override
   String? makeId() {
     // TODO: implement makeId

@@ -26,12 +26,12 @@ class FirestoreService extends BaseService {
           String collection, String field, String id) async =>
       await FirebaseFirestore.instance.collection(collection).doc(id).get();
 
-  updateCollectionDocWithIdByData(
-          String collection, String id, Map<String, dynamic> data) async =>
+  updateCollectionDocWithIdByModel(
+          String collection, String id, BaseModel model) async =>
       await FirebaseFirestore.instance
           .collection(collection)
           .doc(id)
-          .update(data);
+          .update(model.toJson());
 
   deleteCollectionDocWithIdByData(
           String collection, String id, Map<String, dynamic> data) async =>
@@ -54,13 +54,13 @@ class FirestoreService extends BaseService {
     });
   }
 
-  addMapToCollectionInCollection(String collection, String id,
-          String secondCollection, Map<String, dynamic> data) async =>
+  addModelToCollectionInCollection(String collection, String id,
+          String secondCollection, BaseModel model) async =>
       await FirebaseFirestore.instance
           .collection(collection)
           .doc(id)
           .collection(secondCollection)
-          .add(data)
+          .add(model.toJson())
           .catchError((e) {
         print("${e.toString()}");
       });
