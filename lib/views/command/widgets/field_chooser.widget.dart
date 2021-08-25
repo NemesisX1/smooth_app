@@ -32,7 +32,7 @@ class _FieldChooserWidgetState extends State<FieldChooserWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _typedFieldController = widget.textController ?? TextEditingController();
+    _typedFieldController = TextEditingController();
   }
 
   @override

@@ -16,7 +16,12 @@ class CommandViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void validateCommand({VoidCallback? callback}) {
+  void validateCommand({VoidCallback? callback}) async {
+    setState(ViewState.Busy);
+
+    await _firestoreService.addModelToCollection(
+        currentCommand, Collection.commands);
+    setState(ViewState.Idle);
     callback!.call();
   }
 
