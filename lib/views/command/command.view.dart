@@ -47,12 +47,13 @@ class _CommandViewState extends State<CommandView> {
     "Parakou",
   ]; // for tests purpose
 
-  static const List<Flavour> fakeFlavourList = [
+  static List<Flavour> fakeFlavourList = [
     Flavour(name: "Bilbao", price: 1500),
     Flavour(name: "Fraise", price: 1400),
     Flavour(name: "Lavande", price: 4700),
     Flavour(name: "Vanille", price: 3500),
   ];
+
   @override
   Widget build(BuildContext context) => BaseView<CommandViewModel>(
         builder: (context, model, child) => Scaffold(

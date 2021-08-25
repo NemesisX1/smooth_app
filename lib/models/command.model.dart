@@ -1,9 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:smooth/models/base.model.dart';
 
 part 'command.model.g.dart';
 
 @JsonSerializable()
-class Command {
+class Command extends BaseModel {
   String clientName;
   String location;
   int amount;
@@ -19,5 +20,10 @@ class Command {
   });
   factory Command.fromJson(Map<String, dynamic> json) =>
       _$CommandFromJson(json);
+  @override
   Map<String, dynamic> toJson() => _$CommandToJson(this);
+  @override
+  String? makeId() {
+    // TODO: implement makeId
+  }
 }

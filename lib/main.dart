@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:smooth/views/clientdashboard/clientdashboard.view.dart';
 import 'package:smooth/views/home/home.view.dart';
 import 'helpers/theme.dart';
@@ -22,7 +23,7 @@ globalInitializer() async {
 void main() async {
   await globalInitializer();
 
-  runApp(App());
+  initializeDateFormatting('fr_FR').then((_) => runApp(App()));
 }
 
 class App extends StatelessWidget {

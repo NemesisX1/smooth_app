@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:smooth/models/base.model.dart';
 import 'package:smooth/services/base.service.dart';
 
 class Collection {
@@ -43,12 +44,11 @@ class FirestoreService extends BaseService {
           .get()
           .asStream();
 
-  addMapToCollection(Map<String, dynamic> map, String collection,
-      {String? id}) async {
+  addModelToCollection(BaseModel model, String collection, {String? id}) async {
     await FirebaseFirestore.instance
         .collection(collection)
         .doc(id)
-        .set(map)
+        .set(model.toJson())
         .catchError((e) {
       print("$e");
     });
