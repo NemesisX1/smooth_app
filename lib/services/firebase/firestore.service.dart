@@ -22,6 +22,13 @@ class FirestoreService extends BaseService {
           .where(field, isEqualTo: tag)
           .get();
 
+  Stream<QuerySnapshot> getCollectionByTagAsStream(
+          String collection, String field, String tag) =>
+      FirebaseFirestore.instance
+          .collection(collection)
+          .where(field, isEqualTo: tag)
+          .get()
+          .asStream();
   Future<DocumentSnapshot<Map<String, dynamic>>> getCollectionById(
           String collection, String field, String id) async =>
       await FirebaseFirestore.instance.collection(collection).doc(id).get();
@@ -36,13 +43,6 @@ class FirestoreService extends BaseService {
   deleteCollectionDocWithIdByData(
           String collection, String id, Map<String, dynamic> data) async =>
       await FirebaseFirestore.instance.collection(collection).doc(id).delete();
-
-  getCollectionByTagAsStream(String collection, String field, String tag) =>
-      FirebaseFirestore.instance
-          .collection(collection)
-          .where(field, isEqualTo: tag)
-          .get()
-          .asStream();
 
   addModelToCollection(BaseModel model, String collection, {String? id}) async {
     await FirebaseFirestore.instance

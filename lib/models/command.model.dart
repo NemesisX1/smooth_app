@@ -18,8 +18,10 @@ class Command extends BaseModel {
     this.flavourName = "",
     this.qty = 0,
   });
+
   factory Command.fromJson(Map<String, dynamic> json) =>
       _$CommandFromJson(json);
+
   @override
   Map<String, dynamic> toJson() => _$CommandToJson(this);
 

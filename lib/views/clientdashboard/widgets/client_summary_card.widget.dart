@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 import 'package:smooth/helpers/constants.dart';
+import 'package:smooth/models/client.model.dart';
+import 'package:smooth/models/command.model.dart';
+import 'package:smooth/viewmodels/clientdashboard.viewmodel.dart';
 
 class ClientSummaryCard extends StatelessWidget {
-  const ClientSummaryCard({Key? key}) : super(key: key);
+  const ClientSummaryCard({
+    Key? key,
+    required this.client,
+    required this.model,
+  }) : super(key: key);
+
+  final Client client;
+  final ClientDashboardViewModel model;
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -20,7 +31,7 @@ class ClientSummaryCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Olafemi Adjinda",
+                          client.name!,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
@@ -28,7 +39,8 @@ class ClientSummaryCard extends StatelessWidget {
                         ),
                         Gap(3),
                         Text(
-                          "25 fev 2015",
+                          DateFormat('d MMM yyy', 'fr_FR')
+                              .format(client.birthday!),
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.grey[600],
@@ -49,33 +61,64 @@ class ClientSummaryCard extends StatelessWidget {
               ],
             ),
             Gap(8),
-            Row(
-              children: [
-                for (int i = 0; i < 5; i++)
-                  Padding(
-                    padding: i > 0
-                        ? const EdgeInsets.only(left: 5)
-                        : EdgeInsets.all(0),
-                    child: RichText(
-                      text: TextSpan(
-                        text: "10 ",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: "Bao",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-              ],
+            StreamBuilder(
+              stream: model.getCommandsAsStream(client.name!),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasError) return ErrorWidget.withDetails();
+                if (!snapshot.hasData) {
+                  return CircularProgressIndicator(
+                    color: Theme.of(context).accentColor,
+                  );
+                } else {
+                  try {
+                    List<Command> listClientCommand = List<Command>.generate(
+                        snapshot.data.docs.length, (index) {
+                      print(snapshot.data.docs[index].data());
+                      return Command.fromJson(snapshot.data.docs[index].data());
+                    });
+
+                    print(listClientCommand);
+
+                    return Column(
+                      children: List<Text>.generate(listClientCommand.length,
+                          (index) => Text(listClientCommand[index].toString())),
+                    );
+                  } catch (e) {
+                    return Text(e.toString());
+                  }
+
+                  /*return listClientCommand.isEmpty
+                      ? Row(
+                          children: [
+                            for (int i = 0; i < snapshot.data.docs.length; i++)
+                              Padding(
+                                padding: i > 0
+                                    ? const EdgeInsets.only(left: 5)
+                                    : EdgeInsets.all(0),
+                                child: RichText(
+                                  text: TextSpan(
+                                    text: "10 ",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    children: [
+                                      TextSpan(
+                                        text: "Bao",
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.normal,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                          ],
+                        )
+                      : Container();*/
+                }
+              },
             ),
             Divider(
               thickness: 1,

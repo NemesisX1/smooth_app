@@ -1,4 +1,5 @@
 import 'package:flutter/painting.dart';
+import 'package:smooth/models/flavour.model.dart';
 
 /// App colors
 const Color kGreen = Color(0xff146E18);
@@ -17,4 +18,10 @@ const List<String> appCities = [
   "Porto-Novo",
   "Calavi",
   "Parakou",
+];
+
+List<Flavour> flavoursList = [
+  Flavour(name: "Bilbao (Café, Vanille)", price: 2000),
+  Flavour(name: "Sweet Chery (Cerise, Casis)", price: 2500),
+  Flavour(name: "Extra Pure Berry (Fraise)", price: 2000),
 ];

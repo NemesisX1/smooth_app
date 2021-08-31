@@ -52,13 +52,6 @@ class _CommandViewState extends State<CommandView> {
     "Parakou",
   ]; // for tests purpose
 
-  static List<Flavour> fakeFlavourList = [
-    Flavour(name: "Bilbao", price: 1500),
-    Flavour(name: "Fraise", price: 1400),
-    Flavour(name: "Lavande", price: 4700),
-    Flavour(name: "Vanille", price: 3500),
-  ];
-
   List<Client> remoteClientList = [];
   @override
   void initState() {
@@ -208,27 +201,24 @@ class _CommandViewState extends State<CommandView> {
                                 model.updateCurrentCommand(_command);
                               },
                             ),
-                            /*CustomTextField(
-                                    hintText: "Numéro de téléphone",
-                                    controller: _numberController,
-                                    validator: (value) {},
-                                    keyboardType: TextInputType.number,
-                                  ),*/
                             FieldChooserWidget(
                               hintText: "Saveur",
                               fieldList: List<String>.generate(
-                                  fakeFlavourList.length,
-                                  (index) => fakeFlavourList[index].name!),
+                                  flavoursList.length,
+                                  (index) => flavoursList[index].name!),
                               keyboardType: TextInputType.text,
                               onEdited: (value) {
                                 _command.flavourName = value;
                                 try {
-                                  _command.amount = fakeFlavourList
+                                  _command.amount = flavoursList
                                       .where((element) =>
                                           element.name == _command.flavourName)
                                       .first
-                                      .price as int;
-                                } catch (e) {}
+                                      .price!
+                                      .toInt();
+                                } catch (e) {
+                                  print(e.toString());
+                                }
                                 model.updateCurrentCommand(_command);
                               },
                             ),
