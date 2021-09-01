@@ -17,7 +17,6 @@ const List<String> appCities = [
   "Cotonou",
   "Porto-Novo",
   "Calavi",
-  "Parakou",
 ];
 
 List<Flavour> flavoursList = [

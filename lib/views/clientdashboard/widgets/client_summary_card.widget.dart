@@ -26,9 +26,7 @@ class ClientSummaryCard extends StatelessWidget {
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasError) return ErrorWidget.withDetails();
                 if (!snapshot.hasData) {
-                  return CircularProgressIndicator(
-                    color: Theme.of(context).accentColor,
-                  );
+                  return Container();
                 } else {
                   List<Command> commands = List<Command>.generate(
                       snapshot.data.docs.length,
@@ -99,7 +97,7 @@ class ClientSummaryCard extends StatelessWidget {
                                         children: [
                                           TextSpan(
                                             text:
-                                                ' ${flavoursList[i].shortName}',
+                                                ' ${flavoursList[i].shortName} ',
                                             style: TextStyle(
                                               color: Colors.black,
                                               fontWeight: FontWeight.normal,

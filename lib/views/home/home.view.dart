@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:smooth/helpers/extensions.dart';
 import 'package:smooth/helpers/constants.dart';
+import 'package:smooth/models/client.model.dart';
+import 'package:smooth/models/command.model.dart';
 import 'package:smooth/viewmodels/home.viewmodel.dart';
 import 'package:smooth/views/base.view.dart';
 import 'package:smooth/views/home/widgets/city_card.dart';
@@ -18,59 +22,140 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) => BaseView<HomeViewModel>(
         builder: (context, model, child) => Scaffold(
           body: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * (0.4),
-                  color: Theme.of(context).primaryColor,
-                  child: Column(
+            child: StreamBuilder(
+              stream: model.getCommandsAsStream(),
+              builder: (context, AsyncSnapshot snapshot) {
+                if (snapshot.hasError) return ErrorWidget.withDetails();
+                if (!snapshot.hasData) {
+                  return CircularProgressIndicator(
+                    color: Theme.of(context).accentColor,
+                  );
+                } else {
+                  List<Command> commands = List<Command>.generate(
+                      snapshot.data.docs.length,
+                      (index) =>
+                          Command.fromJson(snapshot.data.docs[index].data()));
+
+                  return Column(
                     children: [
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: List<CityCard>.generate(
-                            appCities.length,
-                            (index) => CityCard(
-                              cityName: appCities[index],
-                              amount: 12000,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                      Container(
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height * (0.4),
+                        color: Theme.of(context).primaryColor,
+                        child: Column(
                           children: [
-                            FlavourSummaryCard(
-                              title: "Café Bilbao",
-                              nbrSold: 140,
-                              totalPrice: 375000,
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: List<CityCard>.generate(
+                                  appCities.length,
+                                  (index) => CityCard(
+                                    cityName: appCities[index],
+                                    amount: model.getCountryAmount(
+                                      commands,
+                                      appCities[index],
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
-                            FlavourSummaryCard(
-                              title: "Café Bilbao",
-                              nbrSold: 140,
-                              totalPrice: 375000,
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ...List<FlavourSummaryCard>.generate(
+                                    flavoursList.length,
+                                    (index) => FlavourSummaryCard(
+                                      title: flavoursList[index].name,
+                                      nbrSold: model.clientDashboardViewModel
+                                          .getFlavoursQty(
+                                        commands,
+                                        flavoursList[index].name!,
+                                      ),
+                                      totalPrice: model.getFlavourAmount(
+                                        commands,
+                                        flavoursList[index].name!,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Column(
-                  children: [
-                    for (int i = 0; i < 50; i++)
-                      ClientCard(
-                        clientName: "Junior Medehou",
-                        amount: 15000,
-                        lastCommandDate: "25 Février 2015",
+                      StreamBuilder(
+                        stream:
+                            model.clientDashboardViewModel.getClientAsStream(),
+                        builder: (context, AsyncSnapshot snapshot) {
+                          if (snapshot.hasError) {
+                            return ErrorWidget.withDetails();
+                          }
+                          if (!snapshot.hasData) {
+                            return Column(
+                              children: [
+                                Gap(50),
+                                CircularProgressIndicator(
+                                  color: Theme.of(context).accentColor,
+                                ),
+                              ],
+                            );
+                          } else {
+                            List<Client> listClients = List<Client>.generate(
+                              snapshot.data.docs.length,
+                              (index) => Client.fromJson(
+                                snapshot.data.docs[index].data()
+                                    as Map<String, dynamic>,
+                              ),
+                            );
+
+                            return Column(
+                              children: [
+                                ...List<Widget>.generate(
+                                  snapshot.data.docs.length,
+                                  (index) => StreamBuilder(
+                                      stream: model.clientDashboardViewModel
+                                          .getCommandsAsStream(
+                                        listClients[index].name!,
+                                      ),
+                                      builder:
+                                          (context, AsyncSnapshot snapshot) {
+                                        if (snapshot.hasError) {
+                                          return ErrorWidget.withDetails();
+                                        }
+                                        if (snapshot.hasData) {
+                                          List<Command> commands =
+                                              List<Command>.generate(
+                                                  snapshot.data.docs.length,
+                                                  (index) => Command.fromJson(
+                                                      snapshot.data.docs[index]
+                                                          .data()));
+
+                                          return ClientCard(
+                                            clientName: listClients[index].name,
+                                            amount: model
+                                                .clientDashboardViewModel
+                                                .getTotalAmout(commands),
+                                            lastCommandDate: listClients[index]
+                                                .birthday!
+                                                .toSimpleFormat(),
+                                          );
+                                        } else {
+                                          return Container();
+                                        }
+                                      }),
+                                ),
+                              ],
+                            );
+                          }
+                        },
                       ),
-                  ],
-                ),
-              ],
+                    ],
+                  );
+                }
+              },
             ),
           ),
           floatingActionButton: FloatingActionButton(

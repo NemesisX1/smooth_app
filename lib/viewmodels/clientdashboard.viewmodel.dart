@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:smooth/locator.dart';
 import 'package:smooth/models/command.model.dart';
 import 'package:smooth/services/firebase/firestore.service.dart';
@@ -36,6 +34,7 @@ class ClientDashboardViewModel extends BaseViewModel {
         )
         .toList();
     int sum = 0;
+
     try {
       sum = List<int>.generate(sublistClientCommand.length,
           (index) => sublistClientCommand[index].qty).reduce((a, b) => a + b);
