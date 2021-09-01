@@ -21,7 +21,19 @@ const List<String> appCities = [
 ];
 
 List<Flavour> flavoursList = [
-  Flavour(name: "Bilbao (Café, Vanille)", price: 2000),
-  Flavour(name: "Sweet Chery (Cerise, Casis)", price: 2500),
-  Flavour(name: "Extra Pure Berry (Fraise)", price: 2000),
+  Flavour(
+    name: "Bilbao (Café, Vanille)",
+    price: 2000,
+    shortName: 'Bao',
+  ),
+  Flavour(
+    name: "Sweet Chery (Cerise, Casis)",
+    price: 2500,
+    shortName: 'S.Chery',
+  ),
+  Flavour(
+    name: "Extra Pure Berry (Fraise)",
+    price: 2000,
+    shortName: 'P.Berry',
+  ),
 ];

@@ -6,8 +6,14 @@ part 'flavour.model.g.dart';
 class Flavour extends BaseModel {
   final String? name;
   final int? price;
+  final String? shortName;
 
-  Flavour({required this.name, required this.price});
+  Flavour({
+    required this.name,
+    required this.price,
+    required this.shortName,
+  });
+
   factory Flavour.fromJson(Map<String, dynamic> json) =>
       _$FlavourFromJson(json);
 
