@@ -13,7 +13,7 @@ Smooth is a powerful and intuitive smoothie shop management app built entirely w
 ## 📸 Screenshots  
 | Content |  |
 | --- | --- |
-| ![Home]([assets/github/photo_1_2024-10-24_21-53-41.jpg](https://file.notion.so/f/f/c461f07a-fa2e-461f-a094-ef9a1eaef226/f0b0d9ce-adf0-4b6a-b771-513f587a7af7/Dash_Board.png?table=block&id=19d2a950-32fd-8029-9eb7-ff461d9a1f31&spaceId=c461f07a-fa2e-461f-a094-ef9a1eaef226&expirationTimestamp=1739800800000&signature=vHaXAp9xHQWjJLXMqbGUb4V4XpprlaiJN4TnOqxb6PY&downloadName=Dash_Board.png))  |  ![Customers]([assets/github/photo_2_2024-10-24_21-53-41.jpg](https://file.notion.so/f/f/c461f07a-fa2e-461f-a094-ef9a1eaef226/fd3583ee-40f9-4b37-8f1e-6de637f4910c/Liste_client.png?table=block&id=19d2a950-32fd-8046-b2e2-ee04a4f6d681&spaceId=c461f07a-fa2e-461f-a094-ef9a1eaef226&expirationTimestamp=1739800800000&signature=z5BpLahI5KrLhtb3XUNwl4aBtkCf2IFI_KbhU1qgJsA&downloadName=Liste_client.png)) |
+| ![Home](https://file.notion.so/f/f/c461f07a-fa2e-461f-a094-ef9a1eaef226/f0b0d9ce-adf0-4b6a-b771-513f587a7af7/Dash_Board.png?table=block&id=19d2a950-32fd-8029-9eb7-ff461d9a1f31&spaceId=c461f07a-fa2e-461f-a094-ef9a1eaef226&expirationTimestamp=1739800800000&signature=vHaXAp9xHQWjJLXMqbGUb4V4XpprlaiJN4TnOqxb6PY&downloadName=Dash_Board.png)  |  ![Customers](https://file.notion.so/f/f/c461f07a-fa2e-461f-a094-ef9a1eaef226/fd3583ee-40f9-4b37-8f1e-6de637f4910c/Liste_client.png?table=block&id=19d2a950-32fd-8046-b2e2-ee04a4f6d681&spaceId=c461f07a-fa2e-461f-a094-ef9a1eaef226&expirationTimestamp=1739800800000&signature=z5BpLahI5KrLhtb3XUNwl4aBtkCf2IFI_KbhU1qgJsA&downloadName=Liste_client.png) |
 
 
 ## 🚀 Getting Started  
