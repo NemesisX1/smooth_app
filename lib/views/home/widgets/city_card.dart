@@ -30,7 +30,7 @@ class CityCard extends StatelessWidget {
             Text(
               cityName!,
               style: TextStyle(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).primaryColor,
                 fontSize: 17,
               ),
             ),

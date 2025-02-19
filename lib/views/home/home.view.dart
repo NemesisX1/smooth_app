@@ -28,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
                 if (snapshot.hasError) return ErrorWidget.withDetails();
                 if (!snapshot.hasData) {
                   return CircularProgressIndicator(
-                    color: Theme.of(context).accentColor,
+                    color: Theme.of(context).primaryColor,
                   );
                 } else {
                   List<Command> commands = List<Command>.generate(
@@ -98,7 +98,7 @@ class _HomeViewState extends State<HomeView> {
                               children: [
                                 Gap(50),
                                 CircularProgressIndicator(
-                                  color: Theme.of(context).accentColor,
+                                  color: Theme.of(context).primaryColor,
                                 ),
                               ],
                             );

@@ -38,7 +38,7 @@ class _ClientDashboardViewState extends State<ClientDashboardView> {
                     if (!snapshot.hasData) {
                       return Center(
                           child: CircularProgressIndicator(
-                              color: Theme.of(context).accentColor));
+                              color: Theme.of(context).primaryColor));
                     } else {
                       List<Client> listClients = List<Client>.generate(
                         snapshot.data.docs.length,

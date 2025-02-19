@@ -16,7 +16,7 @@ class CustomTextButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(3),
           border: Border.all(
             width: 1,
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).primaryColor,
           ),
         ),
         child: InkWell(
@@ -30,7 +30,7 @@ class CustomTextButton extends StatelessWidget {
             child: Text(
               text!.toUpperCase(),
               style: TextStyle(
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).primaryColor,
                 fontWeight: FontWeight.bold,
               ),
             ),

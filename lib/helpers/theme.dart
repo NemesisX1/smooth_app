@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 
 /// Global app theme manager
 ThemeData appTheme = ThemeData(
-  accentColor: Color(0xffCD6709),
+  primaryColorLight: Color(0xffCD6709),
   primaryColor: Color(0xffE8A05D),
   textButtonTheme: TextButtonThemeData(
     style: ButtonStyle(
-      textStyle: MaterialStateProperty.all<TextStyle>(
+      textStyle: WidgetStateProperty.all<TextStyle>(
         TextStyle(
           color: Color(0xffCD6709),
         ),
       ),
-      backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent),
-      shape: MaterialStateProperty.all<OutlinedBorder>(
+      backgroundColor: WidgetStateProperty.all<Color>(Colors.transparent),
+      shape: WidgetStateProperty.all<OutlinedBorder>(
         RoundedRectangleBorder(),
       ),
     ),
@@ -53,10 +53,10 @@ ThemeData appTheme = ThemeData(
       borderSide: BorderSide(color: Color(0xffE8A05D)),
     ),
   ),
-  primaryColorBrightness: Brightness.light,
+  brightness: Brightness.light,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
-      backgroundColor: MaterialStateProperty.all<Color>(
+      backgroundColor: WidgetStateProperty.all<Color>(
         Color(0xffCD6709),
       ),
     ),

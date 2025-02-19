@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 import 'package:smooth/helpers/constants.dart';
 import 'package:smooth/helpers/enums.dart';
 import 'package:smooth/models/client.model.dart';
 import 'package:smooth/views/widgets/custom_text_button.widget.dart';
 import 'package:smooth/views/widgets/custom_text_field.widget.dart';
+
 import '../../viewmodels/addclient.viewmodel.dart';
 import '../base.view.dart';
-import 'package:intl/intl.dart';
 
 class DateSelectorButton extends StatefulWidget {
   DateSelectorButton({
@@ -34,7 +35,7 @@ class _DateSelectorButtonState extends State<DateSelectorButton> {
         padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
         decoration: BoxDecoration(
           border: Border(
-            bottom: BorderSide(color: Theme.of(context).accentColor),
+            bottom: BorderSide(color: Theme.of(context).primaryColor),
           ),
         ),
         child: Row(
